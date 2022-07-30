@@ -6,9 +6,9 @@ const httpServer = http.createServer(app)
 const port = 4000
 app.use(express.json())
 const io = new Server(httpServer)
-
+const path = require('node:path');
 app.get('/', (req, res) => {
-    res.sendFile(__dirname +'/index.html');
+    res.sendFile(path.join(__dirname, '../')+'/index.html');
   });
 let messsage = []
 io.on('connection', (socket) => {
