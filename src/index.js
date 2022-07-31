@@ -19,6 +19,10 @@ io.on('connection', (socket) => {
        messsage.push(data)
        io.emit('messsage',messsage)
     })
+    socket.on('send-location',(coords)=>{
+      io.emit('location',`https://www.google.com/maps?q=${coords.latitude},${coords.longitude}`)
+    })
+    socket.broadcast.emit('joined','A new user has joined this chat !')
     socket.on('disconnect', () => {
       console.log('user disconnected');
     });
